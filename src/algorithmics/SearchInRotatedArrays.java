@@ -1,7 +1,5 @@
 package algorithmics;
 
-import javafx.collections.ObservableIntegerArray;
-
 /**
  * Tienes una lista de números enteros ordenada de forma ascendente y sin valores repetidos.
  *
