@@ -1,4 +1,4 @@
-package Algorithmics;
+package algorithmics;
 
 public class MergeTwoSortedLists {
     public static void main(String[] args) {

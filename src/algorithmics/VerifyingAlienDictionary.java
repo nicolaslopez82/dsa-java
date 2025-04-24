@@ -1,9 +1,7 @@
-package Algorithmics;
+package algorithmics;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
 
 /**
  * En una lengua alienígena también utilizan las letras del español, pero posiblemente en un orden diferente.

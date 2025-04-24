@@ -1,4 +1,4 @@
-package Algorithmics;
+package algorithmics;
 
 import javafx.collections.ObservableIntegerArray;
 

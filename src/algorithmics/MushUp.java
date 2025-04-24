@@ -1,6 +1,4 @@
-package Algorithmics;
-
-import java.util.Arrays;
+package algorithmics;
 
 public class MushUp {
 

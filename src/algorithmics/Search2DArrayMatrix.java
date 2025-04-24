@@ -1,6 +1,4 @@
-package Algorithmics;
-
-import java.util.Arrays;
+package algorithmics;
 
 /**
  * Debes escribir un algoritmo eficiente que busque un valor objetivo en una matriz de m x n enteros.

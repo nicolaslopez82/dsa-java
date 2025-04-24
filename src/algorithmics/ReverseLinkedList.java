@@ -1,7 +1,4 @@
-package Algorithmics;
-
-import java.util.ArrayList;
-import java.util.List;
+package algorithmics;
 
 public class ReverseLinkedList {
 

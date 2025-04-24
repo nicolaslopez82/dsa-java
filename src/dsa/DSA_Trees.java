@@ -1,4 +1,4 @@
-package DSA.In.Java;
+package dsa;
 
 /**
  * <> Preorder		Root -> Left -> Right

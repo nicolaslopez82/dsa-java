@@ -1,4 +1,4 @@
-package Algorithmics;
+package algorithmics;
 
 /**
  * Dada una lista de numeros que representan un grupo de lineas de diferentes alturas.

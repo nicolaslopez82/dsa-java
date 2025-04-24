@@ -1,4 +1,4 @@
-package DSA.In.Java;
+package dsa;
 
 class Node{
     int data;

@@ -1,4 +1,4 @@
-package DSA.In.Java;
+package dsa;
 
 public class TreeNode{
     int data;
