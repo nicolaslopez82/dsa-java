@@ -16,7 +16,7 @@ public class MostWaterContainer {
 
     public static void main(String[] args) {
         int[] heights = {1,8,6,2,5,4,8,3,7}; //-> 49
-        //int[] heights = {1,7,6,2,5,4,8,3,8}; //-> 49
+        //int[] heights = {8,1,6,2,5,4,1,3,7}; //-> 56
         System.out.println(maxArea(heights));
     }
 
@@ -24,12 +24,12 @@ public class MostWaterContainer {
         int maxArea = 0;
         //create 2 pointers p1 and p2 that represents both extremes
         int left = 0, right = heights.length - 1;
-        //while 2 pointer are not the same
+        //while 2 pointers are different
         while (left < right) {
             //take p1 value, and multiply by the distance between 2 pointers ((p1 - p2)+1)
             //Save this area that the maxArea
             //Compare with the next area to see which one is bigger
-            maxArea = Math.max(maxArea, heights[left] * heights[right] +1);
+            maxArea = Math.max(maxArea, heights[left] * heights[right]);
             left++;
             right--;
         }
