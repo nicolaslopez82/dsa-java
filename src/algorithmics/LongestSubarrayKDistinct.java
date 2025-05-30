@@ -25,9 +25,11 @@ public class LongestSubarrayKDistinct {
             // If the number of distinct integers exceeds k, shrink the window
                 while (map.size() > k ) {
                     map.put(nums[pLeft], map.get(nums[pLeft]) - 1);
+                    // Remove the integer from map when count becomes zero
                     if (map.get(nums[pLeft]) == 0) {
                         map.remove(nums[pLeft]);
                     }
+                    // shrink the window from the left
                     pLeft++;
                 }
             // Update the maximum length of the window
