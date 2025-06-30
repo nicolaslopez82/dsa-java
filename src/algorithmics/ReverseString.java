@@ -18,6 +18,7 @@ public class ReverseString {
             // front of the existing string
             r = ch + r;
         }
+        System.out.println(r);
 
         List<String> list = new ArrayList<>();
         list.add("Falcon");

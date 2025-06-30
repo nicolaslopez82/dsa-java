@@ -29,16 +29,16 @@ public class ValidatePalidome {
         String str = "neuquen";
         char[] chars = str.toCharArray();
 
-        int pLength = 0;
+        int pLeft = 0;
         int pRight = chars.length - 1;
         boolean isPalindrome = true;
 
-        while (pLength < pRight) {
-            if (chars[pLength] != chars[pRight]) {
+        while (pLeft < pRight) {
+            if (chars[pLeft] != chars[pRight]) {
                 isPalindrome = false;
                 break;
             }
-            pLength++;
+            pLeft++;
             pRight--;
         }
 

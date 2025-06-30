@@ -47,6 +47,7 @@ public class Maximos1sConsecutivosySubcadenasSinRepeticiones {
     }
 
     public static int maximos1sConsecutivosySubcadenasSinRepeticionesII(int [] nums, int k){
+        //int [] nums = {1,1,1,0,0,0,1,1,1,0};
         int pLeft = 0, pRight = 0;
         int zeroCount = 0;
         int res = 0;
@@ -60,7 +61,6 @@ public class Maximos1sConsecutivosySubcadenasSinRepeticiones {
             while(zeroCount > k){
                 if(nums[pLeft] == 0){
                     zeroCount--;
-
                 }
                 pLeft++;
             }
