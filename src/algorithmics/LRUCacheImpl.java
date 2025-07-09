@@ -45,6 +45,7 @@ public class LRUCacheImpl {
     public static void display() {
         System.out.println(" Order values: ");
         order.forEach(System.out::println);
+
         System.out.println(" Cache values: ");
         cache.forEach((integer, s) ->  System.out.println(s));
 
