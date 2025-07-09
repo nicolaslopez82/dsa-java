@@ -26,8 +26,6 @@ public class LRUCacheImpl {
 
     public static void put(int key, String value) {
 
-        String strValue = cache.get(key);
-
         //check the order capacity
         if(order.size() >= capacity){
             //remove the item less used in the order list.
