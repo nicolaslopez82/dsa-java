@@ -1,6 +1,8 @@
 package algorithmics;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class LRUCacheImpl {
     private static int capacity;
