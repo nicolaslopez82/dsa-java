@@ -44,7 +44,7 @@ public class NumberOfIslands {
         for (int r = 0; r < totalRows; r++) {
             for (int c = 0; c < totalCols; c++) {
                 if (grid[r][c] == 'L') {
-                    //Increment number of island variable.
+                    //Increment number of island variables.
                     numberOfIslands++;
                     //If we get 'L', pass like argument the grid, row, col, totalRows, and totalCols to the explore island method.
                     exploreIsland(grid, r, c);
