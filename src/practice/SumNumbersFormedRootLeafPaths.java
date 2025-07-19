@@ -23,6 +23,13 @@ package practice;
  * final answer = 632 + 6357 + 6354 + 654 = 13997
  */
 
+/**
+ * Every recursive function contains two essential pieces:
+ *
+ * Base case: the stopping condition
+ * Recursive case: the repeatable part that keeps calling itself
+ */
+
 class NodeTree{
     int val;
     NodeTree left;

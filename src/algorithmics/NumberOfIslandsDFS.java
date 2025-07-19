@@ -1,5 +1,12 @@
 package algorithmics;
 
+/**
+ * Every recursive function contains two essential pieces:
+ *
+ * Base case: the stopping condition
+ * Recursive case: the repeatable part that keeps calling itself.
+ */
+
 public class NumberOfIslandsDFS {
     public static int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
