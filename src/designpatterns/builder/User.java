@@ -1,26 +1,5 @@
 package designpatterns.builder;
 
-/*public class User {
-    private String name;
-    private int age;
-
-    private User(Builder builder){
-        this.name = builder.name;
-        this.age = builder.age;
-    }
-
-    public static class Builder{
-        public String name;
-        private int age;
-        public Builder name(String name){this.name = name; return this;}
-        public Builder age(int age){this.age = age; return this;}
-        public User builder(){
-            return new User(this);
-        }
-    }
-}*/
-
-
 public class User {
     private String name;
     private int age;
