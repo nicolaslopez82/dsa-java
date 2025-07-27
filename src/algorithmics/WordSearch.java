@@ -1,109 +1,73 @@
 package algorithmics;
 
-/**
- * Dada una cuadrícula m x n y una cadena palabra, devuelve true si esta existe en la cuadrícula.
- *
- * La palabra puede construirse a partir de letras de celdas secuencialmente adyacentes, donde las celdas adyacentes
- * son vecinas horizontal o verticalmente.
- *
- * Una misma celda de letra no pude ser utilizada más de una vez.
- *
- * Ejemplo:
- *
- * // Input
- * const board = [
- *   ["A", "B", "C", "E"],
- *   ["S", "F", "C", "S"],
- *   ["A", "D", "E", "E"],
- * ];
- * const word = "ABCCED";
- * wordExist(board, word);
- *
- * // Output
- * true
- *
- * Ejemplo 2:
- *
- * // Input
- * const board = [
- *   ["A", "M", "C", "E"],
- *   ["A", "M", "C", "E"],
- *   ["A", "M", "C", "E"],
- * ];
- * const word = "AMA";
- * wordExist(board, word);
- *
- * // Output
- * false
- */
-
 public class WordSearch {
 
     public static void main(String[] args) {
-        char [][] board = {{'A', 'B', 'C', 'E'},
-                           {'S', 'F', 'C', 'S'},
-                           {'A', 'D', 'E', 'E'}};
-
-        /*char [][] board = {{'A', 'M', 'C', 'E'},
-                           {'A', 'M', 'C', 'E'},
-                           {'A', 'M', 'C', 'E'}};*/
-
-        String word = "ABCCED";
-        //String word = "AMA";
-
-        System.out.println(exist(board, word));
+        char[][] mat = {{'a', 'x', 'k', 't'},
+                        {'w', 'm', 'd', 'r'},
+                        {'x', 'a', 't', 'k'},
+                        {'d', 'a', 'e', 'o'}};
+        String word = "mateo";
+        System.out.println(isWordExist(mat, word));
     }
 
-    public static boolean exist(char[][] board, String word) {
-
+    // Function to check if the word exists in the matrix or not
+    public static boolean isWordExist(char[][] board, String word) {
+        // take limits
         int totalRows = board.length;
         int totalCols = board[0].length;
-        int index = 0;
+        // variable to result
         boolean exist = false;
+        // check if is safe
 
+        int wIndex = 0;
+
+        // loop to find letter
         for (int i = 0; i < totalRows; i++) {
             for (int j = 0; j < totalCols; j++) {
-                if( board[i][j] == word.charAt(index)){
-                    //Start DFS Recursion.
-                    exist = DFSRecursion(board, word, index, i, j, exist);
-                    return  exist;
+                // If first letter matches, then recur and check
+                if (board[i][j] == word.charAt(wIndex)) {
+                    // DFS to recursion
+                   return DFS(board, word, i, j, totalRows, totalCols, wIndex);
                 }
             }
         }
         return exist;
     }
 
-    public static boolean DFSRecursion(char[][] board, String word, int index, int row, int col, boolean exist) {
-        int totalRows = board.length;
-        int totalCols = board[0].length;
-
-        if(isSafe(row, col, totalRows, totalCols)){
-            if(board[row][col] != word.charAt(index)){
+    // Function to check if a word exists in a grid
+    // starting from the first match in the grid
+    // wIndex: index till which pattern is matched
+    // row, col: current position in 2D array
+    public static boolean DFS(char[][] board, String word, int row, int col, int totalRows, int totalCols, int wIndex) {
+        // Out of Boundary
+        if(row >= 0 && row < totalRows && col >= 0 && col < totalCols) {
+            // If grid doesn't match with a letter while recursion
+            if(board[row][col] != word.charAt(wIndex)) {
                 return false;
             }
-        }else {return false;}
 
-        board[row][col] = '#';
+            // Pattern matched
+            if(wIndex == word.length() - 1) {
+                return true;
+            }
 
-        //End of Matrix and find.
-        if(index == word.length() - 1) {
-            exist = true;
-            return  exist;
+            // Marking this cell as visited
+            board[row][col] = '#';
+
+            int backUpIndex = wIndex;
+            wIndex++;
+
+            // finding subpattern in 4 directions
+            boolean result = DFS(board, word, row + 1, col, totalRows, totalCols, wIndex) ||
+            DFS(board, word, row - 1, col, totalRows, totalCols, wIndex)  ||
+            DFS(board, word, row, col + 1, totalRows, totalCols, wIndex)  ||
+            DFS(board, word, row, col - 1, totalRows, totalCols, wIndex);
+
+            // marking this cell as unvisited again - Backtracking.
+            board[row][col] = word.charAt(backUpIndex);
+            return result;
         }
-
-        //exist = true;
-        index++;
-        DFSRecursion(board, word, index, row + 1, col, exist);
-        DFSRecursion(board, word, index, row, col + 1, exist);
-        DFSRecursion(board, word, index, row, col - 1, exist);
-        DFSRecursion(board, word, index, row - 1, col, exist);
-
-        board[row][col] = word.charAt(index-1); //Backtracking.
-
-        return exist;
-    }
-
-    public static boolean isSafe(int row, int col, int totalRows, int totalCols) {
-        return (row >= 0 && row < totalRows && col >= 0 && col < totalCols);
+        return false;
     }
 }
