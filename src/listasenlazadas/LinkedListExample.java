@@ -1,4 +1,4 @@
-package ListasEnlazadas;
+package listasenlazadas;
 
 public class LinkedListExample {
     public static void main(String[] args) {

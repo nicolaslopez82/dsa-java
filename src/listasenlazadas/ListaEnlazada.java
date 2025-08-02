@@ -1,4 +1,4 @@
-package ListasEnlazadas;
+package listasenlazadas;
 
 public class ListaEnlazada <T> {
     private Node head;
