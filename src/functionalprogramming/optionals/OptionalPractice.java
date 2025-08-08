@@ -4,6 +4,13 @@ import functionalprogramming.challenger.Car;
 
 import java.util.Optional;
 
+/**
+ * Optional es una clase que se introdujo en Java 8 como parte del paquete java.util.
+ *
+ * Su proposito principal, es proporcionar una forma mas segura de manejar valores
+ * que pueden ser nulos y evitar el clasico: "NullPointerException".
+ */
+
 public class OptionalPractice {
     public static void main(String[] args) {
 
@@ -22,6 +29,7 @@ public class OptionalPractice {
 
         System.out.println("==========================" + '\n');
 
+        // Crea un Optional que puede estar vacio si el valor es null.
         // Optional.ofNullable(...) transforma un objeto null, en un objeto vacio.
         Optional<Car> optionalCarNull = Optional.ofNullable(null);
 
@@ -37,7 +45,7 @@ public class OptionalPractice {
 
         System.out.println("==========================" + '\n');
 
-        // Optional.of(...) transforma un objeto null, en un objeto ya que prentende recibir siempre un valor.
+        // Crea un Optional con un valor (Lanza una exception si es null).
         Optional<Car> optionalCarOf = Optional.of(new Car());
 
         if (optionalCarOf.isEmpty()) {
@@ -52,7 +60,8 @@ public class OptionalPractice {
 
         System.out.println("==========================" + '\n');
 
-        //Optional.empty(); Genera un objeto de tipo Car, pero vacio.
+        // Crea un Optional vacio (Optional.empty()).
+        // Optional.empty(); Genera un objeto de tipo Car, pero vacio.
         Optional<Car> optionalCarEmpty = Optional.empty();
         if (optionalCarEmpty.isEmpty()) {
             System.out.println("Optional optionalCarEmpty is Empty");
