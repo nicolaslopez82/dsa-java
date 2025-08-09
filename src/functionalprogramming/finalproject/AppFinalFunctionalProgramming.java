@@ -44,7 +44,37 @@ public class AppFinalFunctionalProgramming {
         Map<String, List<Product>> map = products.stream().collect(Collectors.groupingBy(Product::getCategory));
         map.forEach((k,v)->{System.out.println(k + ": " + v);});
 
+        /** Calculate the average price of each category
+         * and show the category with the average highest price */
         /** */
-        /** */
+
+        Map<String, Double> averagePriceByCategory = new HashMap<>();
+        List<String> categories = products.stream().map(Product::getCategory).collect(Collectors.toList());
+
+        for(String category : categories){
+            OptionalDouble optionalV = products.stream()
+                    .filter(product -> product.getCategory().equals(category))
+                    .mapToDouble(Product::getPrice)
+                    .average();
+            if (optionalV.isPresent()) {
+                averagePriceByCategory.put(category, optionalV.getAsDouble());
+            }
+        }
+        System.out.println('\n' + "Show all categories with the average highest price: ");
+        averagePriceByCategory.forEach((k,v)->{System.out.println(k + ": " + v);});
+
+        System.out.println('\n' + "Show the category with the average highest price: ");
+        Double categoryWithTheAverageHighestPriceD = Collections.max(averagePriceByCategory.values());
+        String categoryWithTheAverageHighestPriceS = findKeyByValueStream(averagePriceByCategory, categoryWithTheAverageHighestPriceD);
+        System.out.println("Category: " + categoryWithTheAverageHighestPriceS + " - Average: " + categoryWithTheAverageHighestPriceD);
+
+    }
+
+    public static <K, V> K findKeyByValueStream(Map<K, V> map, V value) {
+        Optional<K> key = map.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(value))
+                .map(Map.Entry::getKey)
+                .findFirst(); // Finds the first matching key
+        return key.orElse(null);
     }
 }
