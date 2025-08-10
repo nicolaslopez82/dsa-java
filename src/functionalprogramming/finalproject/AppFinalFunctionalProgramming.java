@@ -36,7 +36,8 @@ public class AppFinalFunctionalProgramming {
 
 
         /** Get Product with the lowest price. */
-        Product productWithLowestPrice = products.stream().min(Comparator.comparing(Product::getPrice)).get();
+        // Other alternative without contemplate NPE -> Product productWithLowestPrice = products.stream().min(Comparator.comparing(Product::getPrice)).get();
+        Product productWithLowestPrice = products.stream().min(Comparator.comparing(Product::getPrice)).orElse(new Product("ProductNotAvailable", "NotCategory", 0, 0));
         System.out.println("The product with the lowest price: " + productWithLowestPrice);
 
         /** Group Product by Category. */
@@ -47,7 +48,6 @@ public class AppFinalFunctionalProgramming {
         /** Calculate the average price of each category
          * and show the category with the average highest price */
         /** */
-
         Map<String, Double> averagePriceByCategory = new HashMap<>();
         List<String> categories = products.stream().map(Product::getCategory).collect(Collectors.toList());
 
@@ -67,6 +67,23 @@ public class AppFinalFunctionalProgramming {
         Double categoryWithTheAverageHighestPriceD = Collections.max(averagePriceByCategory.values());
         String categoryWithTheAverageHighestPriceS = findKeyByValueStream(averagePriceByCategory, categoryWithTheAverageHighestPriceD);
         System.out.println("Category: " + categoryWithTheAverageHighestPriceS + " - Average: " + categoryWithTheAverageHighestPriceD);
+
+        /** Calculate the average price of each category
+         * and show the category with the average highest price */
+        /** */
+        System.out.println("Calculate the average price of each category\n" +
+                "         * and show the category with the average highest price\n " +
+                "BETTER SOLUTION: ");
+        Map<String, Double> mapAveragePriceByCategory = products.parallelStream().collect(Collectors.groupingBy(Product::getCategory, Collectors.averagingDouble(Product::getPrice)));
+        mapAveragePriceByCategory.forEach((k,v)->{System.out.println(k + ": " + v);});
+
+        System.out.println('\n' + "Show the category with the average highest price - BETTER SOLUTION: ");
+        String highestAveragePriceByCategory = mapAveragePriceByCategory.entrySet().stream()
+                .max(Comparator.comparingDouble(Map.Entry::getValue))
+                .map(Map.Entry::getKey)
+                .orElse("Not Available");
+        System.out.println("Category: " + highestAveragePriceByCategory +  " - Average: " + mapAveragePriceByCategory.get(highestAveragePriceByCategory));
+
 
     }
 

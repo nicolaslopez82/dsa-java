@@ -49,7 +49,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "\n Product{" +
                 "name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", quantity=" + quantity +
