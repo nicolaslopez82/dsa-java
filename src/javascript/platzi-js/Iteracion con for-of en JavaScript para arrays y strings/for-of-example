@@ -1,0 +1,32 @@
+/*
+The for...of statement executes a loop that operates on a sequence of values sourced from an iterable object. 
+Iterable objects include instances of built-ins such as Array, String, TypedArray, Map, Set, NodeList (and other DOM collections), 
+as well as the arguments object, generators produced by generator functions, and user-defined iterables.
+*/
+
+const array = ["a", "b", "c"];
+
+for (const element of array) {
+  console.log(element);
+}
+
+// Expected output: "a"
+// Expected output: "b"
+// Expected output: "c"
+
+//================================================================================================================================//
+
+let cars = [
+    {brand: "Toyota", model: "Land Cruiser", price: 100.000 },
+    {brand: "Ford", model: "F-150", price: 78.000},
+    {brand: "Kia", model: "Mohave", price: 50.000 },
+    {brand: "Subaru", model: "Forester", price: 40.000 },
+    {brand: "Toyota", model: "Rav-4", price: 35.000 }
+];
+
+// for of -> Use it for List (iterable objects) like Arrays or Strings.
+
+for(const car of cars){
+    console.log(`The cars brand is: + ${car.brand}, and the model is: ${car.model}, and the price is: ${car.price}`);
+}
+
