@@ -11,7 +11,7 @@ Los objetos no solo almacenan datos, también pueden ejecutar acciones a través
 Ejemplo de método dentro de un objeto & Ejemplo de objeto en JavaScript:
 */
 
-const Persona = {
+const persona = {
     nombre: "Nicolas",
     edad: 42,
     direccion: {
@@ -25,10 +25,48 @@ const Persona = {
     },
     saludar: function(){
       return `Hola, mi nombre es: ${this.nombre}`;
+    },
+
+    greeting() {
+        console.log(`Hola, mi nombre es: ${this.nombre} ${this.direccion.calle}`);
     }
 };
 
+// Imprimamos el objeto
+
+console.log(persona);
+
+// Imprimamos la propiedad nombre
+
+console.log(persona.nombre);
+
+// Imprimamos el metodo saludar
+
+persona.saludar();
+
+// Imprimamos el metodo greeting
+
+persona.greeting();
+
 // En este caso, saludar es un método del objeto persona que devuelve un saludo utilizando la propiedad nombre del mismo objeto.
+
+// Agrergamos una propiedad al objeto en este caso telefono
+
+persona.telefono = "555-555-5555";
+
+console.log(persona.telefono);
+
+// Agregamos un metodo al objeto
+
+persona.mostrarPais = () => console.log(`Pais: ${persona.direccion.pais}`);
+
+persona.mostrarPais();
+
+// Eliminar una propiedad de un objeto
+
+delete persona.telefono;
+
+console.log(persona.telefono);
 
 /*   
 Aplicaciones prácticas de los objetos
