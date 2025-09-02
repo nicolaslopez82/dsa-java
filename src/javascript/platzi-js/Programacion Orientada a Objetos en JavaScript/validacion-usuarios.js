@@ -42,30 +42,33 @@ const usersTimeline = [
   },
 ];
 
-const username = prompt(`Ingrese el Usuario`);
-const password = prompt(`Ingrese su Password`);
+const username = prompt("Cual es tu usuario?");
+const password = prompt("Cual es tu password?");
 
 console.log(username);
 console.log(password);
 
-function existeUsuario(username, password){
-    for(let i; i < usersDatabase.length; i++){
-        if(usersDatabase[i].username === username
-            && usersDatabase[i].password === password
-        ){
-            return true;
-        }
+
+
+function usuarioExistente(username, password) {
+  for (let i = 0; i < usersDatabase.length; i++) {
+    if (
+      usersDatabase[i].username === username &&
+      usersDatabase[i].password === password
+    ) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
-function signIn(username, password){
-    if(existeUsuario(username, password)){
-        alert(`Bienvenido a tu cuenta ${username}`);
-        console.log(usersTimeline);
-    }else{
-        alert("Uuups, usuario o contraseÃ±a incorrectos!");
-    }
+function signIn(username, password) {
+  if (usuarioExistente(username, password)) {
+    alert(`Bienvenido a tu cuenta ${username}`);
+    console.log(usersTimeline);
+  } else {
+    alert("Uuups, usuario o password incorrectos!");
+  }
 }
 
 signIn(username, password);
