@@ -21,7 +21,7 @@ public class CodingChallenger {
     public static void main(String[] args) {
         map.put('a', 1);
         map.put('b', 2);
-        map.put('b', 3);
+        map.put('c', 3);
         String str = "abc";
         System.out.println(returnTotalValue(str));
     }
@@ -30,7 +30,7 @@ public class CodingChallenger {
 
         Integer result = 0;
 
-        for(Integer index = 0; index < str.length() - 1; index++){
+        for(int index = 0; index <= str.length() - 1; index++){
             result += (int) map.get((Character)str.charAt(index));
         }
 
